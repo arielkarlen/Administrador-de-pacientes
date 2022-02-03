@@ -1,5 +1,6 @@
-import Header from "./components/header"
+
 import Formulario from "./components/Formulario"
+import HeaderSeguimiento from "./components/HeaderSeguimiento"
 import ListadoPacientes from "./components/ListadoPacientes"
 
 function App() {
@@ -8,11 +9,11 @@ function App() {
 
   return (
     
-    <>
-      <Header />
+    <div className="container mx-auto mt-20">
+      <HeaderSeguimiento />
       <Formulario />
       <ListadoPacientes />
-    </>
+    </div>
   )
 }
 
