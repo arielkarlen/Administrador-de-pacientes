@@ -11,8 +11,10 @@ function App() {
     
     <div className="container mx-auto mt-20">
       <HeaderSeguimiento />
-      <Formulario />
-      <ListadoPacientes />
+      <div className="mt-12 md:flex">
+        <Formulario />
+        <ListadoPacientes />
+      </div>
     </div>
   )
 }
