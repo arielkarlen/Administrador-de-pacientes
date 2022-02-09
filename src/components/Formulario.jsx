@@ -1,12 +1,14 @@
 import {useState, useEffect} from 'react'
 
 
-function Formulario() {
+function Formulario({pacientes, setPacientes}) {
     const [nombre, setNombre] = useState('');
     const [propietario, setPropietario] = useState('');
     const [email, setEmail] = useState('');
     const [fecha, setFecha] = useState('');
     const [sintomas, setSintomas] = useState('');
+
+    const [error, setError] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,14 +16,26 @@ function Formulario() {
         //Validacion de formulario
 
         if([nombre, propietario, email, fecha, sintomas].includes('') ){
-            console.log('Debe completar todos los campos')
+            setError(true)
+            return
         }
-        else {
-            console.log('Campos completos')
-        }
+       setError(false)
 
+       const objetoPaciente = {
+        nombre, 
+        propietario, 
+        email, 
+        fecha, 
+        sintomas
+       }
+       setPacientes([...pacientes, objetoPaciente])
+       
+       setNombre('')
+       setPropietario('')
+       setEmail('')
+       setFecha('')
+       setSintomas('')
 
-        console.log('Enviando formulario')
     }
 
     return(
@@ -31,6 +45,8 @@ function Formulario() {
         <form 
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-lg py-10 px-5 mt-5 mb-10 mx-5">
+
+            {error && <div className='bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md'><p>Debe completar todos los campos</p></div> }
             <div className="mb-5">
                 <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
                     Nombre Mascota</label>
