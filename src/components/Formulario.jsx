@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import Error from './Error';
 
 
-function Formulario({pacientes, setPacientes}) {
+function Formulario({pacientes, setPacientes, paciente}) {
     const [nombre, setNombre] = useState('');
     const [propietario, setPropietario] = useState('');
     const [email, setEmail] = useState('');
@@ -10,6 +10,13 @@ function Formulario({pacientes, setPacientes}) {
     const [sintomas, setSintomas] = useState('');
 
     const [error, setError] = useState(false);
+
+    useEffect(() => {
+        
+     }, [paciente])
+
+    
+
 
     const generarId = () => {
 

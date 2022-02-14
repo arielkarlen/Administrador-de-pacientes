@@ -3,7 +3,7 @@ import Paciente from "./Paciente";
 
 
 
-const ListadoPacientes = ({pacientes}) => {
+const ListadoPacientes = ({pacientes, setPaciente}) => {
 
     console.log()
     return(
@@ -17,6 +17,7 @@ const ListadoPacientes = ({pacientes}) => {
             <Paciente 
              key={paciente.id}
              paciente={paciente}
+             setPaciente={setPaciente}
             />
 
             ))}
