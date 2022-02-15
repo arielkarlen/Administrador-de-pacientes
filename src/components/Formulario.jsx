@@ -11,12 +11,19 @@ function Formulario({pacientes, setPacientes, paciente}) {
 
     const [error, setError] = useState(false);
 
+   
+
     useEffect(() => {
-        
-     }, [paciente])
+        if (Object.keys(paciente).length > 0) {
+            setNombre(paciente.nombre)
+            setPropietario(paciente.propietario)
+            setEmail(paciente.email)
+            setFecha(paciente.fecha)
+            setSintomas(paciente.sintomas)
+        } 
+    }, [paciente])
 
-    
-
+ 
 
     const generarId = () => {
 
@@ -43,9 +50,21 @@ function Formulario({pacientes, setPacientes, paciente}) {
         email, 
         fecha, 
         sintomas,
-        id: generarId()
+        
        }
-       setPacientes([...pacientes, objetoPaciente])
+
+       if(paciente.id) {
+           //Editando el registro
+    objetoPaciente.id = paciente.id
+    console.log(objetoPaciente)
+    console.log(paciente)
+
+       } else {
+           //Nuevo registro
+           objetoPaciente.id = generarId()
+           setPacientes([...pacientes, objetoPaciente])
+       }
+       
        
        setNombre('')
        setPropietario('')
@@ -129,7 +148,7 @@ function Formulario({pacientes, setPacientes, paciente}) {
             <input 
                 type="submit"
                 className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-                value="Agregar paciente"
+                value= {paciente.id ? 'Editar Paciente' : "Agregar paciente"}
             />
         </form>
         
