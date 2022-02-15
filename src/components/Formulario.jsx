@@ -59,6 +59,8 @@ function Formulario({pacientes, setPacientes, paciente}) {
     console.log(objetoPaciente)
     console.log(paciente)
 
+    const pacientesActualizados = pacientes.map (pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState)
+
        } else {
            //Nuevo registro
            objetoPaciente.id = generarId()
